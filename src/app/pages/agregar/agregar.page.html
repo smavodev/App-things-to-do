@@ -13,19 +13,33 @@
 
   <ion-list>
 
-    <ion-item>
-      <ion-label position="floating">Nuevo Item</ion-label>
-      <ion-input type="text" [(ngModel)]="nombreItem" (keyup.enter)="addItem()"></ion-input>
-    </ion-item>
+    
 
-    <ion-list>
-      <ion-list-header>Tareas por hacer</ion-list-header>
-    </ion-list>
 
-    <ion-item *ngFor="let item of lista.items">
-      <ion-checkbox slot="start" [(ngModel)]="item.completado"></ion-checkbox>
-      <ion-label>{{ item.desc }}</ion-label>
-    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nuevo Item</ion-label>
+        <ion-input type="text" [(ngModel)]="nombreItem" (keyup.enter)="addItem()"></ion-input>
+      </ion-item>
+
+      <ion-list>
+        <ion-list-header>Tareas por hacer</ion-list-header>
+      </ion-list>
+
+
+      <ion-item-sliding *ngFor="let item of lista.items; let i = index" class="animated fadeInDown">
+
+      <ion-item >
+        <ion-checkbox slot="start" [(ngModel)]="item.completado" (ionChange)="cambioCheck(item)"></ion-checkbox>
+        <ion-label>{{ item.desc }}</ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="delete( i )" color="danger">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
 
   </ion-list>
 

@@ -29,7 +29,7 @@ export class DeseosService {
 
   SaveStorage(){
     localStorage.setItem('data', JSON.stringify(this.listas) );
-    console.log(this.listas);
+    //console.log(this.listas);
   }
   
   obtenerLista( id: string | number){
@@ -47,5 +47,7 @@ export class DeseosService {
     }
     
   }
+
+  
 
 }
