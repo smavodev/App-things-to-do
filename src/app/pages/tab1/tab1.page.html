@@ -8,8 +8,9 @@
 
   <!-- List of Text Items -->
   <ion-list>
-    <ion-item detail *ngFor="let lista of _deseosService.listas"> 
+    <ion-item (click)="listaSeleccionada( lista )" detail *ngFor="let lista of _deseosService.listas"> 
       <ion-label>{{ lista.titulo }}</ion-label>
+      <ion-note slot="end"> {{ lista.items.length}} items </ion-note>
     </ion-item>
 
   </ion-list>
