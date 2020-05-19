@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Lista } from '../models/list.model';
+import { Lista } from '../models/lista.model';
 import { IfStmt } from '@angular/compiler';
 
 @Injectable({
@@ -24,6 +24,7 @@ export class DeseosService {
     const nuevaLista = new Lista(titulo);
     this.listas.push(nuevaLista);
     this.SaveStorage();
+    return nuevaLista.id;
   }
 
   SaveStorage(){
@@ -31,6 +32,13 @@ export class DeseosService {
     console.log(this.listas);
   }
   
+  obtenerLista( id: string | number){
+    id =  Number(id);
+    return this.listas.find( listData => {
+        return listData.id === id;
+    });
+  }
+
   LoadStorage(){
     if(localStorage.getItem('data') ){
       this.listas = JSON.parse(localStorage.getItem('data') );

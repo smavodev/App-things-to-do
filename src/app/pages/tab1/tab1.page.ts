@@ -43,10 +43,10 @@ export class Tab1Page {
               return;
             }
 
-            this._deseosService.createList(data.titulo);
+            const listaId = this._deseosService.createList(data.titulo);
 
             //Crear lista
-            
+            this._router.navigateByUrl(`/tabs/tab1/agregar/${listaId}`);
 
           }
         }

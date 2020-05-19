@@ -5,7 +5,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Nombre de Lista:</ion-title>
+    <ion-title>{{ lista.titulo }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,16 +15,16 @@
 
     <ion-item>
       <ion-label position="floating">Nuevo Item</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="nombreItem" (keyup.enter)="addItem()"></ion-input>
     </ion-item>
 
     <ion-list>
       <ion-list-header>Tareas por hacer</ion-list-header>
     </ion-list>
 
-    <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Commit changes</ion-label>
+    <ion-item *ngFor="let item of lista.items">
+      <ion-checkbox slot="start" [(ngModel)]="item.completado"></ion-checkbox>
+      <ion-label>{{ item.desc }}</ion-label>
     </ion-item>
 
   </ion-list>
