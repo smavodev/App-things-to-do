@@ -31,9 +31,7 @@ export class ListasComponent implements OnInit {
   }
 
   borrarLista( lista: Lista ) {
-
     this.deseosService.deleteList( lista );
-
   }
 
   async editarLista( lista: Lista ) {
@@ -60,7 +58,7 @@ export class ListasComponent implements OnInit {
         {
           text: 'Actualizar',
           handler: ( data ) => {
-            console.log(data);
+            //console.log(data);
             if ( data.titulo.length === 0 ) {
               return;
             }

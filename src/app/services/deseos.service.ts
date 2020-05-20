@@ -26,11 +26,20 @@ export class DeseosService {
     return nuevaLista.id;
   }
 
+
+  deleteList( lista: Lista ) {
+    this.listas = this.listas.filter( listaData => {
+    return listaData.id !== lista.id });
+    this.SaveStorage();
+  }
+
+
   SaveStorage(){
     localStorage.setItem('data', JSON.stringify(this.listas) );
     //console.log(this.listas);
   }
   
+
   obtenerLista( id: string | number){
     id =  Number(id);
     return this.listas.find( listData => {
@@ -38,21 +47,13 @@ export class DeseosService {
     });
   }
 
+
   LoadStorage(){
     if(localStorage.getItem('data') ){
       this.listas = JSON.parse(localStorage.getItem('data') );
     } else {
       this.listas = [];
     }
-    
-  }
-
-  deleteList( lista: Lista ) {
-
-    this.listas = this.listas.filter( listaData => listaData.id !== lista.id );
-
-    this.SaveStorage();
-
   }
 
 }
