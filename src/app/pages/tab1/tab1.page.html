@@ -5,19 +5,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  
+  <app-listas [terminada]="false"></app-listas>
+  
   <!-- List of Text Items -->
-  <ion-list>
+  <!-- <ion-list>
     <ion-item (click)="listaSeleccionada( lista )" detail *ngFor="let lista of _deseosService.listas"> 
       <ion-label>{{ lista.titulo }}</ion-label>
       <ion-note slot="end"> {{ lista.items.length}} items </ion-note>
     </ion-item>
 
-  </ion-list>
+  </ion-list>-->
 
     <!-- fab placed to the top end -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button color="success" (click)="addList()">
+      <ion-fab-button color="primary" (click)="addList()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>

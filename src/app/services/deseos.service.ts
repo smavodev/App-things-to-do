@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Lista } from '../models/lista.model';
-import { IfStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeseosService {
   
-  public listas:Lista[] = [];
+  listas:Lista[] = [];
 
   constructor() { 
     //console.log('Servicio Inicializado');
@@ -48,6 +47,12 @@ export class DeseosService {
     
   }
 
-  
+  deleteList( lista: Lista ) {
+
+    this.listas = this.listas.filter( listaData => listaData.id !== lista.id );
+
+    this.SaveStorage();
+
+  }
 
 }
