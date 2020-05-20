@@ -14,29 +14,29 @@ export class ListasComponent implements OnInit {
   @ViewChild( IonList ) lista: IonList;
   @Input() terminada = true;
 
-  constructor( public deseosService: DeseosService,
-               private router: Router,
-               private alertCtrl: AlertController ) { }
+  constructor( public _deseosService: DeseosService,
+               private _router: Router,
+               private _alertCtrl: AlertController ) { }
 
   ngOnInit() {}
 
   listaSeleccionada( lista: Lista ) {
 
     if ( this.terminada ) {
-      this.router.navigateByUrl(`/tabs/tab2/agregar/${ lista.id }`);
+      this._router.navigateByUrl(`/tabs/tab2/agregar/${ lista.id }`);
     } else {
-      this.router.navigateByUrl(`/tabs/tab1/agregar/${ lista.id }`);
+      this._router.navigateByUrl(`/tabs/tab1/agregar/${ lista.id }`);
     }
 
   }
 
   borrarLista( lista: Lista ) {
-    this.deseosService.deleteList( lista );
+    this._deseosService.deleteList( lista );
   }
 
   async editarLista( lista: Lista ) {
 
-    const alert = await this.alertCtrl.create({
+    const alert = await this._alertCtrl.create({
       header: 'Editar lista',
       inputs: [
         {
@@ -64,7 +64,7 @@ export class ListasComponent implements OnInit {
             }
 
             lista.titulo = data.titulo;
-            this.deseosService.SaveStorage();
+            this._deseosService.SaveStorage();
             this.lista.closeSlidingItems();
           }
         }
